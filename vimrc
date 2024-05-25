@@ -124,3 +124,23 @@ nnoremap <C-h> <C-w>h
 
 " rainbow 
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+
+" vim-plug section
+call plug#begin('~/.vim/plugged')
+
+"vim-polygot: syntax highlighting
+Plug 'sheerun/vim-polyglot'
+
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+call plug#end()
+
+" setting tab for python file
+aug python
+    " ftype/python.vim overwrites this
+    au FileType python setlocal ts=4 sts=4 sw=4 noexpandtab
+aug end
+
+packloadall
